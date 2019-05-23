@@ -1,0 +1,46 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+       
+        <form>
+                <div class="form-group">
+                <div class="container">
+                 <div class="row">
+                        <div class="col-9">
+                                <input type="text" class="form-control" placeholder="Buscar" name="searchPost">
+                        </div>
+                        <div class="col-3">
+                                 <button type="submit" class="btn btn-default btn-block"><i class="fa fa-search"></i></button>  
+                        </div>
+                        </div>
+             
+                </div>
+                </div>
+        </form>    
+      
+       
+
+      {% for post in posts %} 
+      
+      
+      
+<div class="card" style="width: 20rem;  border-radius: 0px; ">
+  <img class="card-img-top"  alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title" >{{post.title}}</h5>
+    <p class="card-text"> 
+    
+            el dia:{{post.date_posted|date:"F d ,Y"}} 
+     </p>
+    
+    <a href="{% url 'post-detail' post.id %}" class="btn btn-primary" style="border-radius: 0px; ">Ver detalles</a>
+  </div>
+</div>
+  {% endfor %}  
+{% endblock content %}
+
+{% block extra_js %}
+<script>
+
+</script>
+{% endblock extra_js %}

@@ -1,0 +1,103 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+body{
+  background-color:#E9ECEF;
+}
+</style>
+<div class="container">
+<div class="jumbotron" style="padding-top:2%;%">
+  
+  <h5> Configuracion de perfil <strong>{{user.username}}</strong></h5>
+  
+  <hr class="my-2">
+  <p>*Algunos de los siguientes datos son obligatorios</p>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-11 jumbotron" style="background-color:white;">
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col text-center">
+                <img class=" account-img" src="{{user.profile.image.url}}">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col">
+                {% if messages %}
+                  {% for message in messages %}
+                
+                  	<div class=" alert alert-{{ message.tags }}">
+						     {{ message }}
+						       </div>
+               
+                  {% endfor %}
+                {% endif %}          
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+              <form method = "POST" onclick="var()" enctype="multipart/form-data">
+                 {% csrf_token %}
+                <fieldset class="form-group">
+            {{ u_form|crispy }}
+            {{ p_form|crispy }}
+               </fieldset>
+               <button class="btn btn-block btn-light" type="submit"> Guardar</button>
+              </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-1">
+    
+       
+      <a name="" id="" class="boton" href="#" role="">  <i class="fab fa-accessible-icon fa-lg"></i></a>
+      <a name="" id="" class="boton" href="#" role="button">  <i class="fab fa-accessible-icon fa-lg"></i></a>
+  
+      
+    </div>
+  </div>
+</div>
+</div>
+</div>
+{% endblock content %}
+{% block extra_js %}
+<script>
+$(document).ready(function() {        
+    $('[name ="username"]').inputlimiter({
+        limit: 15,
+        remText: '%n caractere%s restantes.',
+        limitText: 'Usuario limitado a %n caractere%s.'
+    });
+    $('[name ="email"]').inputlimiter({
+        limit: 30,
+        remText: '%n caractere%s restantes.',
+        limitText: 'Correo electronico limitado a %n caractere%s.'
+    });
+          
+    $('#hint_id_username').hide();
+    $('#hint_id_password1').hide();
+});
+$('[name ="username"]').keypress(function (e) {
+    var regex = new RegExp("^[a-zA-Z0-9]+$");
+    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (regex.test(str)) {
+        return true;
+    }
+    e.preventDefault();
+     return false;
+});
+$('[name ="password1"]').click(function() {
+    $('#hint_id_password1').show();
+});
+
+$("#div_id_image span:first").hide();
+</script>
+{% endblock extra_js %}
+
+

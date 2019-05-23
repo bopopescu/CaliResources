@@ -1,0 +1,36 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <form  method="POST" class="form-group jumbotron" style="margin-top:15px;">
+          <div class="page-header">
+            <h3 class=""> Publica una oferta de empleo</h3>
+            <hr>
+            </div>
+            <div class="form-group">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <br>
+            <button type="submit" class="btn btn-primary">Publicar</button>
+            </div>
+
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+{% block extra_js %}
+<script>
+
+</script>
+{% endblock extra_js %}
+
+
+
+
