@@ -25,7 +25,7 @@ SECRET_KEY = '0_y=g!q=o2vm7@dn^zdd2zkhu16=l@l&dl6hsjao_0o!fp-eal'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['workpick.herokuapp.com/']
 
 
 # Application definition
