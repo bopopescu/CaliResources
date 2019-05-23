@@ -11,6 +11,7 @@ django-crispy-forms = "*"
 pillow = "*"
 gunicorn = "*"
 whitenoise = "*"
+whitnoise = "*"
 
 [requires]
 python_version = "3.6"
