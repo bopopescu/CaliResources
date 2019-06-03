@@ -2,102 +2,136 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <style>
-body{
-  background-color:#E9ECEF;
-}
+  body {
+    background-color: #E9ECEF;
+  }
 </style>
 <div class="container">
-<div class="jumbotron" style="padding-top:2%;%">
-  
-  <h5> Configuracion de perfil <strong>{{user.username}}</strong></h5>
-  
-  <hr class="my-2">
-  <p>*Algunos de los siguientes datos son obligatorios</p>
-  <div class="form-group">
-    <div class="row">
-      <div class="col-11 jumbotron" style="background-color:white;">
-        <div class="row">
-          <div class="col">
-            <div class="row">
-              <div class="col text-center">
-                <img class=" account-img" src="{{user.profile.image.url}}">
+  <div class="jumbotron" style="padding-top:2%;%">
+
+    <h5> Configuracion de perfil <strong>{{user.username}}</strong></h5>
+
+    <hr class="my-2">
+    <p>*Algunos de los siguientes datos son obligatorios</p>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-11 jumbotron" style="background-color:white;">
+          <div class="row">
+            <div class="col">
+              <div class="row">
+                <div class="col text-center">
+                  <img class=" account-img" src="{{user.profile.image.url}}">
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col">
-            <div class="row">
-              <div class="col">
-                {% if messages %}
+            <div class="col">
+              <div class="row">
+                <div class="col">
+                  {% if messages %}
                   {% for message in messages %}
-                
-                  	<div class=" alert alert-{{ message.tags }}">
-						     {{ message }}
-						       </div>
-               
+
+                  <div class=" alert alert-{{ message.tags }}">
+                    {{ message }}
+                  </div>
+
                   {% endfor %}
-                {% endif %}          
+                  {% endif %}
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col">
-              <form method = "POST" onclick="var()" enctype="multipart/form-data">
-                 {% csrf_token %}
-                <fieldset class="form-group">
-            {{ u_form|crispy }}
-            {{ p_form|crispy }}
-               </fieldset>
-               <button class="btn btn-block btn-light" type="submit"> Guardar</button>
-              </form>
+              <div class="row">
+                <div class="col">
+                  <form method="POST" onclick="var()" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                      {{ u_form|crispy }}
+                      {{ p_form|crispy }}
+                      <button class="btn btn-primary" id="image" type="button">
+                        Subir foto
+                      </button>
+                    </fieldset>
+                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Configuracion</button> <br>
+                    <button class="btn btn-block btn-light" type="submit"> Guardar</button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-1">
-    
-       
-      <a name="" id="" class="boton" href="#" role="">  <i class="fab fa-accessible-icon fa-lg"></i></a>
-      <a name="" id="" class="boton" href="#" role="button">  <i class="fab fa-accessible-icon fa-lg"></i></a>
-  
-      
     </div>
   </div>
 </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Lenguaje | Discapacidad </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+       <div class="modal-body">
+        <form>
+          <div class="form-group">
+                 {{ d_form|crispy }}
+                      {{ l_form|crispy }}
+          </div>
+           <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+       
+      </div>
+    </div>
+  </div>
 </div>
-</div>
+
 {% endblock content %}
 {% block extra_js %}
 <script>
-$(document).ready(function() {        
+  $(document).ready(function () {
     $('[name ="username"]').inputlimiter({
-        limit: 15,
-        remText: '%n caractere%s restantes.',
-        limitText: 'Usuario limitado a %n caractere%s.'
+      limit: 15,
+      remText: '%n caractere%s restantes.',
+      limitText: 'Usuario limitado a %n caractere%s.'
     });
     $('[name ="email"]').inputlimiter({
-        limit: 30,
-        remText: '%n caractere%s restantes.',
-        limitText: 'Correo electronico limitado a %n caractere%s.'
+      limit: 30,
+      remText: '%n caractere%s restantes.',
+      limitText: 'Correo electronico limitado a %n caractere%s.'
     });
-          
+
     $('#hint_id_username').hide();
     $('#hint_id_password1').hide();
-});
-$('[name ="username"]').keypress(function (e) {
+    $(".account-img").aeImageResize({
+      height: 200,
+      width: 200
+    });
+    $('#id_image').hide();
+  });
+  $('[name ="username"]').keypress(function (e) {
     var regex = new RegExp("^[a-zA-Z0-9]+$");
     var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
     if (regex.test(str)) {
-        return true;
+      return true;
     }
     e.preventDefault();
-     return false;
-});
-$('[name ="password1"]').click(function() {
+    return false;
+  });
+  $('[name ="password1"]').click(function () {
     $('#hint_id_password1').show();
-});
+  });
 
-$("#div_id_image span:first").hide();
+  $(function () {
+    $('#id_bornDate').datepicker({
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "-80:+0",
+    });
+  });
+  $("#image").click(function () {
+    $("#id_image").click();
+  });
 </script>
 {% endblock extra_js %}
-
-

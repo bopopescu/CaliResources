@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import views as auth_views
-from .models import Profile 
+from .models import Profile , Language , Disability
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
@@ -21,4 +21,12 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
             model = Profile
-            fields  = ['image']
+            fields  = ['firstname','lastname','phone','country','bornDate','image']
+class ProfileLanguageForm(forms.ModelForm):
+     class Meta:
+            model = Language 
+            fields = ['language']
+class ProfileDisabilityForm(forms.ModelForm):
+    class Meta: 
+            model = Disability
+            fields = ['disability']

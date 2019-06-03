@@ -1,46 +1,45 @@
 {% extends "blog/base.html" %}
 {% block content %}
+<form>
+  <div class="form-group">
+    <div class="container">
+      <div class="row">
+        <div class="col-9">
+          <input type="text" class="form-control" placeholder="Buscar" name="searchPost">
+        </div>
+        <div class="col-3">
+          <button type="submit" class="btn btn-default btn-block"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
 
-       
-        <form>
-                <div class="form-group">
-                <div class="container">
-                 <div class="row">
-                        <div class="col-9">
-                                <input type="text" class="form-control" placeholder="Buscar" name="searchPost">
-                        </div>
-                        <div class="col-3">
-                                 <button type="submit" class="btn btn-default btn-block"><i class="fa fa-search"></i></button>  
-                        </div>
-                        </div>
-             
-                </div>
-                </div>
-        </form>    
-      
-       
-
-      {% for post in posts %} 
-      
-      
-      
+    </div>
+  </div>
+</form>
+{% for post in posts %}
 <div class="card" style="width: 20rem;  border-radius: 0px; ">
-  <img class="card-img-top"  alt="Card image cap">
+  <img class="card-img-top" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title" >{{post.title}}</h5>
-    <p class="card-text"> 
-    
-            el dia:{{post.date_posted|date:"F d ,Y"}} 
-     </p>
-    
+    <h5 class="card-title">{{post.title}}</h5>
+    <p class="card-text">
+      el dia:{{post.date_posted|date:"F d ,Y"}}
+    </p>
     <a href="{% url 'post-detail' post.id %}" class="btn btn-primary" style="border-radius: 0px; ">Ver detalles</a>
   </div>
 </div>
-  {% endfor %}  
+{% endfor %}
+<ul class="pagination">
+  {% if posts.has_previous %}
+  <li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
+  <li class="page-item"><a class="page-link" href="?page={{ posts.previous_page_number }}">previous</a></li>
+  {% endif %}
+  <span class="page-link">
+    Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+  </span>
+  {% if posts.has_next %}
+  <li class="page-item"><a class="page-link" href="?page={{ posts.next_page_number }}">next</a></li>
+  <li class="page-item"><a class="page-link" href="?page={{ posts.paginator.num_pages }}">last &raquo;</a></li>
+  {% endif %}
+</ul>
 {% endblock content %}
-
 {% block extra_js %}
-<script>
-
-</script>
 {% endblock extra_js %}

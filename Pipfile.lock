@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "8b4906df8e36e69bee53a78bbed8ee6a769574f6c6a4ac6b075292a0fae0b2ee"
+            "sha256": "34b4e8d1761c54417a09a1191de0097c6f4cf22a95df50b006c6dd5325eb057f"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -18,18 +18,18 @@
     "default": {
         "boto3": {
             "hashes": [
-                "sha256:33257e7c8da6880a00c38789011e5d8acdd7e6a9bc5bdabc1eb7d441837b2d63",
-                "sha256:9c0233b879996f8232c35e903d07017ffad97b2dadd70758d9d28ef86aa9ed13"
+                "sha256:8a8219c2d7c3f10bda255b78d99dfabe9a15d6a5a96ca6bcfa51ba5ca204105c",
+                "sha256:aa1a95f7fc850dd734893946d8e6024ff9bd06515fa5c13ad96396efa6d83ce8"
             ],
             "index": "pypi",
-            "version": "==1.9.155"
+            "version": "==1.9.159"
         },
         "botocore": {
             "hashes": [
-                "sha256:e5f5ea3edd16d2846ca984fd57d31ad98526020fcea630f47bb00a11e61957b9",
-                "sha256:ff9070a5e707c9c445622167501dccfe9ec893f761792ae100c508435a38cda8"
+                "sha256:2f90e4d435b45bd708046b8e647c649bb7ff48f26892b86a2869f271a33270f0",
+                "sha256:35a199173d91791b9a4d69e1a02752fa5276f57b56cd1d26dd3144883c9f21e9"
             ],
-            "version": "==1.12.155"
+            "version": "==1.12.159"
         },
         "dj-database-url": {
             "hashes": [
@@ -45,6 +45,14 @@
             ],
             "index": "pypi",
             "version": "==2.2.1"
+        },
+        "django-countries": {
+            "hashes": [
+                "sha256:5307a61172eee5740720e44ea08721858b7d8bf8509ec7701ccd7a8d21120b9a",
+                "sha256:e4eaaec9bddb9365365109f833d1fd0ecc0cfee3348bf5441c0ccefb2d6917cd"
+            ],
+            "index": "pypi",
+            "version": "==5.3.3"
         },
         "django-crispy-forms": {
             "hashes": [
@@ -62,6 +70,21 @@
             "index": "pypi",
             "version": "==0.3.1"
         },
+        "django-language-field": {
+            "hashes": [
+                "sha256:8836a6a1345d8e0f2181ab39a49ced7f810c69eb717948a45daf0779182fe8dc"
+            ],
+            "index": "pypi",
+            "version": "==0.0.3"
+        },
+        "django-phone-field": {
+            "hashes": [
+                "sha256:935196d1ee94952fd90803f599c3b97b74c21148cacdfa119cf0e324a0812311",
+                "sha256:a51070bde21e36d49370712c0974efd8f2222bed0ec5719c06860b8c64144f17"
+            ],
+            "index": "pypi",
+            "version": "==1.7.1"
+        },
         "django-storages": {
             "hashes": [
                 "sha256:8e35d2c7baeda5dc6f0b4f9a0fc142d25f9a1bf72b8cebfcbc5db4863abc552d",
@@ -69,6 +92,13 @@
             ],
             "index": "pypi",
             "version": "==1.7.1"
+        },
+        "django-truncate": {
+            "hashes": [
+                "sha256:e6b153145ee898c792bc460031727ddc3518bc7594a58c8935dc4d45c46f06b5"
+            ],
+            "index": "pypi",
+            "version": "==0.1"
         },
         "docutils": {
             "hashes": [
@@ -139,6 +169,7 @@
                 "sha256:de3d3c46c1ee18f996db42d1eb44cf1565cc9e38fb1dbd9b773ff6b3fa8035d7",
                 "sha256:dee885602bb200bdcb1d30f6da6c7bb207360bc786d0a364fe1540dd14af0bab"
             ],
+            "index": "pypi",
             "version": "==2.8.2"
         },
         "python-dateutil": {
@@ -179,11 +210,11 @@
         },
         "urllib3": {
             "hashes": [
-                "sha256:2393a695cd12afedd0dcb26fe5d50d0cf248e5a66f75dbd89a3d4eb333a61af4",
-                "sha256:a637e5fae88995b256e3409dc4d52c2e2e0ba32c42a6365fee8bbd2238de3cfb"
+                "sha256:b246607a25ac80bedac05c6f282e3cdaf3afb65420fd024ac94435cabe6e18d1",
+                "sha256:dbe59173209418ae49d485b87d1681aefa36252ee85884c31346debd19463232"
             ],
             "markers": "python_version >= '3.4'",
-            "version": "==1.24.3"
+            "version": "==1.25.3"
         },
         "whitenoise": {
             "hashes": [

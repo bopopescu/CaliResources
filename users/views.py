@@ -1,7 +1,7 @@
 from django.shortcuts import render ,redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterForm, UserUpdateForm , ProfileUpdateForm
+from .forms import UserRegisterForm, UserUpdateForm , ProfileUpdateForm ,ProfileLanguageForm ,ProfileDisabilityForm
 
 
 
@@ -35,10 +35,14 @@ def profile(request):
 	else:
 		u_form = UserUpdateForm(instance=request.user)
 		p_form = ProfileUpdateForm(instance=request.user.profile)
+		d_form = ProfileDisabilityForm(instance=request.user)
+		l_form = ProfileLanguageForm(instance=request.user.profile)
 
 		context = {
 		'u_form':u_form,
-		'p_form':p_form
+		'p_form':p_form,
+		'd_form':d_form,
+		'l_form':l_form,
 		}
 
 	return render(request , 'users/profile.html',context)

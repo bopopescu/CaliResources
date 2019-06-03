@@ -41,7 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'storages'
+    'storages',
+    'languages',
+    'django_countries',
+    'phone_field',
+    'django_truncate',
                                  
     
 ]

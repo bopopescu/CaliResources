@@ -15,6 +15,11 @@ django-heroku = "*"
 setuptools = "*"
 django-storages = "*"
 boto3 = "*"
+django-language-field = "*"
+psycopg2 = "*"
+django-countries = "*"
+django-phone-field = "*"
+django-truncate = "*"
 
 [requires]
 python_version = "3.6"

@@ -6,19 +6,12 @@ from .models import Post
 from django.core.paginator import Paginator
 
 def home(request):
-    context = {
+    post_list = Post.objects.all()
+    paginator = Paginator(post_list, 3) # Show 25 contacts per page
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+    return render(request, 'blog/home.html', {'posts': posts})
 
-        'posts': Post.objects.all()
-    }
-          
-    return render(request,'blog/home.html', context)
-
-class PostListView(ListView):
-    model = Post 
-    template_name = 'blog/home.html'
-    context_object_name = 'posts'
-    ordering = ['-date_posted']
-    #paginate_by = 2 
 class PostDetailView(DetailView):
     model = Post 
     template_name = 'blog/post_detail.html'
