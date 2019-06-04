@@ -6,11 +6,11 @@ from django_countries.fields import CountryField
 import datetime
 from phone_field import PhoneField
 class Language(models.Model): 
-    language = LanguageField()
+    language = LanguageField(max_length=255)
     def __str__(self):
         return self.language
 class Disability (models.Model):
-    disability = models.CharField('Discapacidad',max_length=255)
+    disability = models.CharField(max_length=255)
     def __str__(self):
         return self.disability
 class Profile(models.Model):
