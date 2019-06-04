@@ -11,16 +11,16 @@ class Language(models.Model):
     def __str__(self):
         return self.language
 class Disability (models.Model):
-    disability = models.CharField(max_length=255)
+    disability = models.CharField(max_length=30)
   
     def __str__(self):
         return self.disability
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    firstname = models.CharField(max_length=255, default='nombre')
-    lastname = models.CharField(max_length=255, default='apellido')
+    firstname = models.CharField(max_length=30, default='nombre')
+    lastname = models.CharField(max_length=30, default='apellido')
     phone = PhoneField(blank=True, help_text='Numero de Celular')
-    country = CountryField(default='mexico')
+    country = CountryField(blank_label='(select country)')
     bornDate = models.DateField('Fecha de nacimiento',blank=False,default=datetime.date.today)
     image  = models.ImageField(default='default.png',upload_to='profile_pics')
     disability = models.ManyToManyField(Disability)
