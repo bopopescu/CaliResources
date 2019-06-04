@@ -6,11 +6,13 @@ from django_countries.fields import CountryField
 import datetime
 from phone_field import PhoneField
 class Language(models.Model): 
-    language = LanguageField(max_length=255)
+    language = LanguageField()
+   
     def __str__(self):
         return self.language
 class Disability (models.Model):
     disability = models.CharField(max_length=255)
+  
     def __str__(self):
         return self.disability
 class Profile(models.Model):
@@ -23,6 +25,7 @@ class Profile(models.Model):
     image  = models.ImageField(default='default.png',upload_to='profile_pics')
     disability = models.ManyToManyField(Disability)
     language = models.ManyToManyField(Language)
+  
     def __str__(self):
         return f'{self.user.username} Profile'
 
